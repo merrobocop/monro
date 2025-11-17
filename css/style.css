@@ -1,0 +1,38 @@
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+background: #fff7fa;
+}
+
+
+.navbar {
+display: flex;
+justify-content: space-between;
+padding: 15px 40px;
+background: white;
+position: sticky;
+top: 0;
+border-bottom: 1px solid #f0d7e2;
+}
+
+
+.nav-links a {
+margin-left: 20px;
+text-decoration: none;
+color: #c05779;
+}
+
+
+.hero {
+background: url('../img/hero.jpg') center/cover no-repeat;
+height: 90vh;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+color: #fff;
+}
+
+
+.btn-primary {
+padding: 12px 25
