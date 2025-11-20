@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/monro/static/css/main.a21330c3.css",
+    "main.js": "/monro/static/js/main.a7581897.js",
+    "index.html": "/monro/index.html",
+    "main.a21330c3.css.map": "/monro/static/css/main.a21330c3.css.map",
+    "main.a7581897.js.map": "/monro/static/js/main.a7581897.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a21330c3.css",
+    "static/js/main.a7581897.js"
+  ]
+}
