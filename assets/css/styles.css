@@ -170,39 +170,35 @@ body{
   box-shadow: 0 8px 20px rgba(32,24,24,0.06);
 }
 
-/* WhatsApp: градиент в том же стиле, но зелёный */
 .btn-whatsapp {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  /* Градиент по аналогии с btn-primary */
-  background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
-  background-color: #25D366; /* fallback */
-  color: #fff;
-  text-decoration: none;
+  gap: 8px;
   padding: 10px 18px;
   border-radius: 10px;
   font-weight: 600;
-  box-shadow: var(--shadow);
-  transition: transform 0.12s ease, box-shadow 0.12s ease, filter .12s ease;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(32,24,24,0.06);
+  background: linear-gradient(90deg, #00BD4F 0%, #17B000 26%, #149600 100%) !important;
+  transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
 }
 
-/* hover / focus для WhatsApp */
 .btn-whatsapp:hover,
 .btn-whatsapp:focus {
-  transform: translateY(-2px);
+  transform: scale(1.05);
   filter: brightness(1.06);
   box-shadow: 0 10px 22px rgba(32,24,24,0.12);
   outline: none;
 }
 
-/* иконка (svg или img) справа */
 .whatsapp-icon {
   width: 20px;
   height: 20px;
-  flex: 0 0 20px;
   display: inline-block;
+  flex: 0 0 20px;
 }
+
 
 /* sections */
 .section{padding:56px 0}
