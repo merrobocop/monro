@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Monro — Головна</title>
+  <meta name="description" content="Клініка естетичної косметології — догляд, процедури та консультації." />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">✦</span>
+      <span class="brand-text">Monro</span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link active">Головна</a>
+      <a href="about.html" class="nav-link">Про мене</a>
+      <a href="services.html" class="nav-link">Послуги</a>
+    </nav>
+	
+	<div class="lang-switcher">
+		<img src="/assets/img/flags/en.png" alt="EN" data-lang="en">
+		<img src="/assets/img/flags/nl.png" alt="NL" data-lang="nl">
+		<img src="/assets/img/flags/ua.png" alt="UA" data-lang="uk">
+	</div>
+
+	
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <h1>Природна краса — ваша впевненість</h1>
+      <p class="lead">
+        Преміальний догляд за шкірою. Індивідуальні програми та безпечні методики.
+      </p>
+      <p class="hero-cta">
+        <a href="services.html" class="btn btn-primary">Переглянути послуги</a>
+        <a href="https://wa.me/message/W2GFCUUCL2YNE1" class="btn btn-whatsapp" target="_blank">
+          Записатися
+          <img src="/assets/img/wa.png" alt="WhatsApp" class="whatsapp-icon">
+        </a>
+      </p>
+    </div>
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=900&auto=format&fit=crop" alt="Hero image">
+    </div>
+  </div>
+</section>
+
+
+  <section class="section services-preview">
+    <div class="container">
+      <h2>Популярні процедури</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Очищення та догляд</h3>
+          <p>Глибоке очищення та зволоження для сяючої шкіри.</p>
+        </article>
+        <article class="card">
+          <h3>Контурна корекція</h3>
+          <p>Безпечні процедури для природного результату.</p>
+        </article>
+        <article class="card">
+          <h3>Лазерні процедури</h3>
+          <p>Омолодження, видалення пігментації та відновлення шкіри.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>© <span id="year"></span> Monro</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+	<script src="/assets/js/lang-switcher.js" defer></script>
+
+</body>
+</html>

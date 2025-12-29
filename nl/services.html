@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Monro — Behandelingen</title>
+  <meta name="description" content="Lijst van kliniekbehandelingen — verzorging, injecties, laserprocedures." />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/nl/"><span class="brand-mark">✦</span><span class="brand-text">Monro</span></a>
+    <nav class="main-nav">
+      <a href="/nl/" class="nav-link">Home</a>
+      <a href="/nl/about.html" class="nav-link">Over mij</a>
+      <a href="/nl/services.html" class="nav-link active">Behandelingen</a>
+    </nav>
+	
+	<div class="lang-switcher">
+		<img src="/assets/img/flags/en.png" alt="EN" data-lang="en">
+		<img src="/assets/img/flags/nl.png" alt="NL" data-lang="nl">
+		<img src="/assets/img/flags/ua.png" alt="UA" data-lang="uk">
+	</div>
+
+  </div>
+</header>
+
+<main>
+  <section class="section container services-page">
+    <h1>Onze behandelingen</h1>
+    <p class="lead">Volledige reeks esthetische behandelingen — van diagnose tot onderhoud.</p>
+
+    <div class="services-list">
+      <article class="service">
+        <h3>Huidreiniging en detox</h3>
+        <p>Diepe reiniging, peelings, maskers en verzorging voor een stralende huid.</p>
+        <div class="service-meta">
+          <span>Duur: 45–60 min</span>
+          <span>Prijs: vanaf €60</span>
+        </div>
+      </article>
+
+      <article class="service">
+        <h3>Contourcorrectie</h3>
+        <p>Correctie van lippen, wangen en kin met gecertificeerde fillers.</p>
+        <div class="service-meta">
+          <span>Duur: 30–45 min</span>
+          <span>Prijs: vanaf €200</span>
+        </div>
+      </article>
+
+      <article class="service">
+        <h3>Laserverjonging</h3>
+        <p>Procedures om pigmentatie te verminderen, textuur te egaliseren en collageen te stimuleren.</p>
+        <div class="service-meta">
+          <span>Duur: 30–60 min</span>
+          <span>Prijs: vanaf €120</span>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>© <span id="year"></span> Monro</div>
+    <nav class="footer-nav">
+      <a href="/nl/">Home</a>
+      <a href="/nl/about.html">Over mij</a>
+      <a href="/nl/services.html">Behandelingen</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+	<script src="/assets/js/lang-switcher.js" defer></script>
+
+</body>
+</html>

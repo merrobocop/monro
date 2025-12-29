@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Monro — Over mij</title>
+  <meta name="description" content="Over de specialist — ervaring, opleiding en persoonlijke aanpak." />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/nl/"><span class="brand-mark">✦</span><span class="brand-text">Monro</span></a>
+	
+	<nav class="main-nav">
+		<a href="/nl/" class="nav-link">Home</a>
+		<a href="/nl/about.html" class="nav-link active">Over mij</a>
+		<a href="/nl/services.html" class="nav-link">Behandelingen</a>
+	</nav>
+	<div class="lang-switcher">
+		<img src="/assets/img/flags/en.png" alt="EN" data-lang="en">
+		<img src="/assets/img/flags/nl.png" alt="NL" data-lang="nl">
+		<img src="/assets/img/flags/ua.png" alt="UA" data-lang="uk">
+	</div>
+
+  </div>
+</header>
+
+<main>
+  <section class="section container about-page">
+    <div class="about-page-grid">
+      <div class="about-photo">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=900&auto=format&fit=crop" alt="Specialist">
+      </div>
+
+      <div class="about-content">
+        <h1>Over de specialist</h1>
+        <p class="lead">
+          Ik ben een gediplomeerd cosmetisch specialist met meer dan 10 jaar ervaring.
+          Persoonlijke aandacht, moderne technieken en veilige producten staan centraal.
+        </p>
+
+        <h3>Opleiding & certificering</h3>
+        <ul>
+          <li>Medische opleiding — Universiteit (voorbeeld)</li>
+          <li>Opleidingen esthetische geneeskunde</li>
+          <li>Gecertificeerd in hygiëne en veiligheid</li>
+        </ul>
+
+        <h3>Mijn aanpak</h3>
+        <p>
+          Elke behandeling begint met een uitgebreide consultatie.
+          Mijn doel is een natuurlijk resultaat en een gezonde huid.
+        </p>
+
+        <p><a class="btn btn-primary" href="/nl/services.html">Bekijk behandelingen</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>© <span id="year"></span> Monro</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+	<script src="/assets/js/lang-switcher.js" defer></script>
+
+</body>
+</html>

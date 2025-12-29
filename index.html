@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Redirecting...</title>
+<script>
+(function(){
+  const DEFAULT_LANG = 'nl';
+  const SUPPORTED = ['en','nl','uk'];
+
+  // Проверяем, есть ли сохранённый язык
+  let savedLang = localStorage.getItem('site_lang');
+
+  // Если нет сохранения, используем язык браузера
+  if(!savedLang){
+    let navLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    if(navLang.startsWith('en')) savedLang = 'en';
+    else if(navLang.startsWith('uk') || navLang.startsWith('ua')) savedLang = 'uk';
+    else savedLang = DEFAULT_LANG;
+  }
+
+  // Обновляем localStorage
+  localStorage.setItem('site_lang', savedLang);
+
+  // Перенаправляем на index.html нужного языка
+  window.location.replace('/' + savedLang + '/index.html');
+})();
+</script>
+</head>
+<body>
+Redirecting...
+</body>
+</html>

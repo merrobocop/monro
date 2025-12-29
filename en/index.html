@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Monro — Home</title>
+  <meta name="description" content="Aesthetic skin clinic — treatments, care and consultations." />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">✦</span>
+      <span class="brand-text">Monro</span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="services.html" class="nav-link">Services</a>
+    </nav>
+	
+	<div class="lang-switcher">
+		<img src="/assets/img/flags/en.png" alt="EN" data-lang="en">
+		<img src="/assets/img/flags/nl.png" alt="NL" data-lang="nl">
+		<img src="/assets/img/flags/ua.png" alt="UA" data-lang="uk">
+	</div>
+
+ </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <h1>Natural beauty — your confidence</h1>
+        <p class="lead">
+          Premium skin care treatments. Personal approach and safe techniques.
+        </p>
+        <p class="hero-cta">
+		`	<a href="services.html" class="btn btn-primary">View services</a>
+			<a href="https://wa.me/message/W2GFCUUCL2YNE1" class="btn btn-whatsapp" target="_blank">
+				Book appointment
+			<img src="/assets/img/wa.png" alt="WhatsApp" class="whatsapp-icon">
+		</a>
+	</p>
+
+      </div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=900&auto=format&fit=crop">
+      </div>
+    </div>
+  </section>
+
+  <section class="section services-preview">
+    <div class="container">
+      <h2>Popular treatments</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Cleansing & care</h3>
+          <p>Deep cleansing and hydrating treatments for glowing skin.</p>
+        </article>
+        <article class="card">
+          <h3>Contour enhancement</h3>
+          <p>Safe procedures for natural facial definition.</p>
+        </article>
+        <article class="card">
+          <h3>Laser treatments</h3>
+          <p>Skin rejuvenation, pigmentation removal and recovery.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>© <span id="year"></span> Monro</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+	<script src="/assets/js/lang-switcher.js" defer></script>
+
+</body>
+</html>
