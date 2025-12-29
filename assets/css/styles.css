@@ -1,13 +1,13 @@
-/* styles.css — общий для всех страниц
-   Пастельно-розово-белая тема, адаптивность, базовая типографика
+/* styles.css — полный файл
+   Пастельно-розово-белая тема, адаптивность, кнопка WhatsApp с градиентом
 */
 
 /* Переменные */
 :root{
   --bg: #ffffff;
   --muted: #f8f6f5;
-  --accent: #f6d7dd; /* пастельно-розовый */
-  --accent-2: #f3e9e7; /* бежево-розовый */
+  --accent: #f6d7dd;       /* пастельно-розовый */
+  --accent-2: #f3e9e7;     /* бежево-розовый */
   --text: #222222;
   --muted-text: #6b6b6b;
   --radius: 12px;
@@ -114,13 +114,13 @@ body{
   transform: scale(1.08);
 }
 
-/* активный флаг — внешняя подсветка через box-shadow (вне элемента) */
+/* активный флаг — внешняя подсветка через box-shadow */
 .lang-switcher img.active,
 .lang-switcher a.active img {
   box-shadow:
-    0 0 0 3px rgba(246,215,221,1),        /* плотное кольцо — цвет var(--accent) */
-    0 6px 18px rgba(32,24,24,0.06);        /* мягкая тень */
-  transform: translateZ(0); /* рендер-ускорение */
+    0 0 0 3px rgba(246,215,221,1),
+    0 6px 18px rgba(32,24,24,0.06);
+  transform: translateZ(0);
 }
 
 /* Hero */
@@ -135,40 +135,90 @@ body{
 .lead{color:var(--muted-text);font-size:16px;margin:0 0 18px}
 .hero-media img{width:100%;height:auto;border-radius:16px;box-shadow:var(--shadow);display:block}
 
-/* buttons */
-.btn{display:inline-block;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:600}
-.btn-primary{background:linear-gradient(90deg,#f7bcc6,#f6d7dd);color:var(--text);box-shadow:var(--shadow)}
-.btn-outline{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--text)}
+/* buttons common */
+.btn{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  line-height:1;
+  vertical-align:middle;
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
 
-/* WhatsApp кнопка */
+/* primary (розовый градиент) */
+.btn-primary{
+  background: linear-gradient(90deg, #f7bcc6 0%, #f6d7dd 100%);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  transform: translateY(-2px);
+}
+
+/* outline */
+.btn-outline{
+  background:transparent;
+  border:1px solid rgba(0,0,0,0.06);
+  color:var(--text);
+}
+.btn-outline:hover,
+.btn-outline:focus{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(32,24,24,0.06);
+}
+
+/* WhatsApp: градиент в том же стиле, но зелёный */
 .btn-whatsapp {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: linear-gradient(90deg, #25D366, #1ebe57); /* градиент зеленого */
+  gap: 10px;
+  /* Градиент по аналогии с btn-primary */
+  background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
+  background-color: #25D366; /* fallback */
   color: #fff;
   text-decoration: none;
   padding: 10px 18px;
   border-radius: 10px;
   font-weight: 600;
   box-shadow: var(--shadow);
-  transition: transform 0.2s;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter .12s ease;
 }
 
-.btn-whatsapp:hover {
-  transform: scale(1.05);
-  filter: brightness(1.1);
+/* hover / focus для WhatsApp */
+.btn-whatsapp:hover,
+.btn-whatsapp:focus {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow: 0 10px 22px rgba(32,24,24,0.12);
+  outline: none;
 }
 
+/* иконка (svg или img) справа */
 .whatsapp-icon {
-  width: 20px;   
+  width: 20px;
   height: 20px;
+  flex: 0 0 20px;
+  display: inline-block;
 }
 
 /* sections */
 .section{padding:56px 0}
-.services-preview .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
-.card{background:white;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);padding-bottom:18px}
+.services-preview .cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-top:20px;
+}
+.card{
+  background:white;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  padding-bottom:18px;
+}
 .card img{width:100%;height:160px;object-fit:cover;display:block}
 .card h3{margin:14px 16px 6px}
 .card p{margin:0 16px 12px;color:var(--muted-text)}
@@ -212,4 +262,7 @@ body{
   .brand-text{font-size:16px}
   .hero-text h1{font-size:28px}
   .footer-inner{flex-direction:column;align-items:flex-start;gap:8px}
+  .btn { padding: 8px 12px; }
+  .btn-whatsapp { padding: 8px 12px; gap: 6px; }
+  .whatsapp-icon { width: 18px; height: 18px; }
 }
