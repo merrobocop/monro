@@ -114,7 +114,7 @@ body{
   transform: scale(1.08);
 }
 
-/* активный флаг — внешняя подсветка через box-shadow */
+/* активный флаг — внешняя подсветка через box-shadow (вне элемента) */
 .lang-switcher img.active,
 .lang-switcher a.active img {
   box-shadow:
@@ -145,28 +145,24 @@ body{
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: #25D366; /* зелёный WhatsApp */
+  background: linear-gradient(90deg, #25D366, #1ebe57); /* градиент зеленого */
   color: #fff;
   text-decoration: none;
   padding: 10px 18px;
   border-radius: 10px;
   font-weight: 600;
   box-shadow: var(--shadow);
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  transition: transform 0.2s;
 }
 
-.btn-whatsapp:hover,
-.btn-whatsapp:focus {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(32,24,24,0.12);
-  outline: none;
+.btn-whatsapp:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 .whatsapp-icon {
-  width: 20px;
+  width: 20px;   
   height: 20px;
-  flex: 0 0 20px;
-  display: inline-block;
 }
 
 /* sections */
@@ -216,6 +212,4 @@ body{
   .brand-text{font-size:16px}
   .hero-text h1{font-size:28px}
   .footer-inner{flex-direction:column;align-items:flex-start;gap:8px}
-  .btn-whatsapp {padding:8px 12px; gap:6px;}
-  .whatsapp-icon {width:18px; height:18px;}
 }
