@@ -372,6 +372,6 @@ h1 {
 /* если есть необходимость перекрыть более специфичные правила */
 .lang-switcher img.active {
   /* раскомментируй следующий line, если обводка всё ещё не видна */
-  /* outline: 3px solid rgba(246,215,221,1) !important; */
+  outline: 3px solid rgba(246,215,221,1) !important; */
 }
 
