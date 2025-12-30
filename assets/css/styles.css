@@ -1,21 +1,24 @@
-/* styles.css — полный файл
-   Пастельно-розово-белая тема, адаптивность, кнопка WhatsApp с градиентом
-*/
+/* styles.css — адаптивная mobile-first версия для Monro */
 
 /* Переменные */
 :root{
   --bg: #ffffff;
   --muted: #f8f6f5;
-  --accent: #f6d7dd;       /* пастельно-розовый */
-  --accent-2: #f3e9e7;     /* бежево-розовый */
+  --accent: #f6d7dd;
+  --accent-2: #f3e9e7;
   --text: #222222;
   --muted-text: #6b6b6b;
   --radius: 12px;
   --container: 1100px;
   --shadow: 0 6px 18px rgba(32,24,24,0.06);
+
+  /* breakpoints */
+  --bp-sm: 640px;   /* телефоны -> планшеты */
+  --bp-md: 980px;   /* планшеты -> десктоп */
+  --bp-lg: 1200px;  /* широкий экран */
 }
 
-/* Баз */
+/* ====== БАЗ (mobile-first) ====== */
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body{
@@ -26,137 +29,188 @@ body{
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   line-height:1.5;
+  -webkit-font-feature-settings: "liga" 1;
 }
 
-/* контейнер */
+/* контейнер — гибкий и центрированный */
 .container{
   max-width:var(--container);
   margin:0 auto;
-  padding:0 20px;
+  padding:0 16px;
+  width:100%;
 }
 
-/* header */
+/* глобальные изображения */
+img, picture {
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+
+/* заголовки адаптивно */
+h1 {
+  font-family:"Playfair Display", serif;
+  font-size: clamp(26px, 5.5vw, 40px);
+  margin: 0 0 12px;
+  line-height:1.05;
+}
+.lead {
+  color:var(--muted-text);
+  font-size: clamp(14px, 3.5vw, 16px);
+  margin:0 0 16px;
+}
+
+/* ====== HEADER ====== */
+/* шапка: фиксированный фон, но гибкое содержимое */
 .site-header{
-  background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.9));
+  background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95));
   border-bottom:1px solid rgba(0,0,0,0.03);
   position:sticky;
   top:0;
-  z-index:50;
+  z-index:60;
   backdrop-filter: blur(6px);
 }
+
+/* .header-inner теперь умеет переноситься */
 .header-inner{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:16px;
-  padding:18px 0;
+  gap:12px;
+  padding:12px 0;
+  flex-wrap:wrap; /* ключ: позволит компонентам переноситься */
 }
+
+/* бренд (логотип + текст) */
 .brand{
   display:flex;
   gap:10px;
   align-items:center;
   text-decoration:none;
   color:var(--text);
-}
-.brand-mark{
-  display:inline-block;
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  background:linear-gradient(135deg,var(--accent),var(--accent-2));
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:700;
-  box-shadow:var(--shadow);
-  font-family:"Playfair Display", serif;
-}
-.brand-text{
-  font-weight:600;
-  font-size:18px;
-  letter-spacing:0.2px;
+  flex:0 1 auto;
 }
 
-/* nav */
-.main-nav{display:flex;gap:14px;align-items:center}
-.nav-link{
+/* круглый логотип */
+.brand-logo {
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  flex:0 0 40px;
+  box-shadow: var(--shadow);
+}
+
+/* название рядом с логотипом */
+.brand-text{
+  font-weight:600;
+  font-size:16px;
+  letter-spacing:0.2px;
+  white-space:nowrap;
+}
+
+/* навигация: на мобильных — центр, скролл при необходимости */
+.main-nav{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:center;
+  order:2; /* чтобы центрироваться под логотипом при переносе */
+  width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling: touch;
+  padding:6px 0;
+}
+.main-nav::-webkit-scrollbar { height:6px; }
+.main-nav a {
+  flex:0 0 auto;
   color:var(--muted-text);
   text-decoration:none;
   padding:8px 12px;
   border-radius:10px;
   font-weight:500;
+  white-space:nowrap;
 }
-.nav-link:hover{background:var(--muted);color:var(--text)}
-.nav-link.active{background:var(--accent);color:var(--text)}
+.main-nav a:hover { background:var(--muted); color:var(--text); }
+.main-nav a.active { background:var(--accent); color:var(--text); }
 
-/* language switcher (flags) */
+/* языковой переключатель — справа на больших экранах, под навигацией на мобильных */
 .lang-switcher {
-  display: flex;
-  gap: 8px;
-  margin-left: auto;
-  align-items: center;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  order:3;
+  margin-left:auto;
+  flex:0 0 auto;
 }
-
-/* базовые флаги */
 .lang-switcher img {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid #ddd;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-  cursor: pointer;
-  display: block;
-  box-sizing: border-box;
-  background-clip: padding-box;
-}
-.lang-switcher img:hover {
-  transform: scale(1.08);
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  border:1px solid #ddd;
+  display:block;
 }
 
-/* активный флаг — внешняя подсветка через box-shadow */
-.lang-switcher img.active,
-.lang-switcher a.active img {
-  box-shadow:
-    0 0 0 3px rgba(246,215,221,1),
-    0 6px 18px rgba(32,24,24,0.06);
-  transform: translateZ(0);
+/* кнопки в шапке (если будут) */
+.header-actions {
+  display:flex;
+  gap:8px;
+  align-items:center;
+  order:4;
+  flex:0 0 auto;
 }
 
-/* Hero */
-.hero{padding:60px 0;background:var(--muted)}
-.hero-grid{display:grid;grid-template-columns:1fr 480px;gap:32px;align-items:center}
-.hero-text h1{
-  font-family:"Playfair Display", serif;
-  font-size:40px;
-  margin:0 0 16px;
-  color:var(--text);
+/* ====== HERO ====== */
+/* мобильная версия — одна колонка */
+.hero{
+  padding:36px 0;
+  background:var(--muted);
 }
-.lead{color:var(--muted-text);font-size:16px;margin:0 0 18px}
-.hero-media img{width:100%;height:auto;border-radius:16px;box-shadow:var(--shadow);display:block}
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:20px;
+  align-items:center;
+}
+.hero-media img{
+  width:100%;
+  height:auto;
+  border-radius:12px;
+  box-shadow:var(--shadow);
+}
 
-/* buttons common */
+/* CTA кнопки в hero: вертикально на мобайле */
+.hero-cta{
+  display:flex;
+  gap:12px;
+  flex-direction:column;
+  align-items:stretch;
+  margin-top:8px;
+}
+
+/* общие кнопки */
 .btn{
-  display:inline-block;
-  padding:10px 18px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:10px 14px;
   border-radius:10px;
   text-decoration:none;
   font-weight:600;
   line-height:1;
-  vertical-align:middle;
-  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+  width:100%;
+  box-sizing:border-box;
 }
 
-/* primary (розовый градиент) */
+/* primary — розовый градиент (как был) */
 .btn-primary{
   background: linear-gradient(90deg, #f7bcc6 0%, #f6d7dd 100%);
   color: var(--text);
   box-shadow: var(--shadow);
 }
-.btn-primary:hover,
-.btn-primary:focus {
-  transform: translateY(-2px);
-}
+.btn-primary:hover { transform: translateY(-2px); }
 
 /* outline */
 .btn-outline{
@@ -164,111 +218,126 @@ body{
   border:1px solid rgba(0,0,0,0.06);
   color:var(--text);
 }
-.btn-outline:hover,
-.btn-outline:focus{
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(32,24,24,0.06);
-}
+.btn-outline:hover { transform: translateY(-2px); }
 
-/* Кнопка WhatsApp с градиентом */
+/* WhatsApp */
 .btn-whatsapp {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  border-radius: 10px;
-  font-weight: 600;
-  color: #fff;
-  text-decoration: none;
-  box-shadow: 0 6px 18px rgba(32,24,24,0.06);
-  background: linear-gradient(
-    90deg,
-    #00BD4F 0%,
-    #00D659 26%,
-    #138F00 100%
-  );
-  transition: transform 0.2s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:600;
+  color:#fff;
+  text-decoration:none;
+  background: linear-gradient(90deg, #00BD4F 0%, #00D659 26%, #138F00 100%);
+  box-shadow: var(--shadow);
+  width:100%;
 }
+.btn-whatsapp:hover { transform: translateY(-2px); filter:brightness(1.04); }
 
-.btn-whatsapp:hover {
-  transform: scale(1.05);
-}
+/* иконка для WA */
+.whatsapp-icon { width:20px; height:20px; display:inline-block; }
 
-/* Иконка WhatsApp */
-.whatsapp-icon {
-  width: 20px;
-  height: 20px;
-}
-
-.brand-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-}
-
-
-
-/* sections */
-.section{padding:56px 0}
+/* ====== СЕКЦИИ И КАРТОЧКИ (адаптивный grid) ====== */
+.section{ padding:36px 0; }
 .services-preview .cards{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-  margin-top:20px;
+  grid-template-columns: 1fr;
+  gap:16px;
+  margin-top:12px;
 }
+
+/* карточка */
 .card{
   background:white;
-  border-radius:14px;
+  border-radius:12px;
   overflow:hidden;
   box-shadow:var(--shadow);
-  padding-bottom:18px;
+  padding:14px;
 }
-.card img{width:100%;height:160px;object-fit:cover;display:block}
-.card h3{margin:14px 16px 6px}
-.card p{margin:0 16px 12px;color:var(--muted-text)}
-.card-link{display:inline-block;margin:0 16px 12px;color:#b95b6f;font-weight:600;text-decoration:none}
+.card img{ width:100%; height:160px; object-fit:cover; border-radius:8px; }
+.card h3{ margin:12px 0 8px; font-size:18px; }
+.card p{ margin:0; color:var(--muted-text); font-size:14px; }
 
 /* about grid */
-.about-grid{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
-.about-media img{width:100%;border-radius:12px;box-shadow:var(--shadow)}
+.about-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:18px;
+  align-items:center;
+}
+.about-media img { border-radius:12px; }
 
 /* contact cta */
-.contact-cta{background:linear-gradient(180deg,var(--accent-2),var(--bg));padding:28px 0}
-.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.cta-form{display:flex;gap:12px;align-items:center}
-.cta-form input{padding:12px 14px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);min-width:180px}
-
-/* services list */
-.services-list{display:grid;gap:18px;margin-top:18px}
-.service{background:white;padding:20px;border-radius:12px;box-shadow:var(--shadow)}
-.service-meta{display:flex;gap:12px;color:var(--muted-text);font-size:14px;margin-top:14px}
+.contact-cta{ background: linear-gradient(180deg,var(--accent-2),var(--bg)); padding:20px 0; }
 
 /* footer */
-.site-footer{border-top:1px solid rgba(0,0,0,0.04);padding:18px 0;background:transparent}
-.footer-inner{display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--muted-text);font-size:14px}
-.footer-nav a{margin-left:12px;color:var(--muted-text);text-decoration:none}
+.site-footer{ border-top:1px solid rgba(0,0,0,0.04); padding:18px 0; background:transparent; }
+.footer-inner{ display:flex; flex-direction:column; gap:8px; color:var(--muted-text); font-size:14px; align-items:center; text-align:center; }
 
-/* Accessibility helper */
+/* utilities */
 .visually-hidden{
   position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;
 }
 
-/* Responsive */
-@media (max-width:980px){
-  .hero-grid{grid-template-columns:1fr; padding:0 0 10px}
-  .about-grid{grid-template-columns:1fr; order: initial}
-  .services-preview .cards{grid-template-columns:repeat(2,1fr)}
-  .cta-inner{flex-direction:column;align-items:flex-start}
-  .header-inner{padding:12px 0}
+/* ====== MEDIA QUERIES (tablet and up) ====== */
+@media (min-width: 640px) {
+  .container { padding: 0 20px; }
+
+  /* header */
+  .header-inner { padding:14px 0; }
+  .main-nav { width:auto; order:1; padding:0; }
+  .lang-switcher { order:3; margin-left: 8px; }
+
+  /* hero -> two columns on medium screens if enough space for image */
+  .hero-grid { grid-template-columns: 1fr 420px; gap:28px; }
+  .hero { padding:48px 0; }
+
+  /* hero-cta: buttons inline on wider mobile */
+  .hero-cta { flex-direction: row; align-items:center; justify-content:flex-start; width:100%; }
+  .hero-cta .btn { width:auto; }
+
+  /* services grid -> 2 columns */
+  .services-preview .cards { grid-template-columns: repeat(2, 1fr); gap:18px; }
+
+  /* about grid -> two columns if image present */
+  .about-grid { grid-template-columns: 1fr 360px; }
+  .footer-inner { flex-direction:row; justify-content:space-between; width:100%; text-align:left; }
 }
-@media (max-width:640px){
-  .services-preview .cards{grid-template-columns:1fr}
-  .brand-text{font-size:16px}
-  .hero-text h1{font-size:28px}
-  .footer-inner{flex-direction:column;align-items:flex-start;gap:8px}
-  .btn { padding: 8px 12px; }
-  .btn-whatsapp { padding: 8px 12px; gap: 6px; }
-  .whatsapp-icon { width: 18px; height: 18px; }
+
+/* ====== MEDIA QUERIES (desktop and up) ====== */
+@media (min-width: 980px) {
+  .header-inner { padding:18px 0; }
+  .brand-text { font-size:18px; }
+  .main-nav { order:0; width:auto; }
+  .lang-switcher { margin-left: 12px; }
+
+  /* hero -> more spacious */
+  .hero-grid { grid-template-columns: 1fr 480px; gap:32px; align-items:center; }
+  .hero { padding:56px 0; }
+
+  /* services grid -> 3 columns */
+  .services-preview .cards { grid-template-columns: repeat(3, 1fr); gap:20px; }
+
+  /* footer */
+  .footer-inner { align-items:center; }
 }
+
+/* ====== LARGE SCREENS ====== */
+@media (min-width: 1200px) {
+  .container { max-width: 1200px; }
+  .hero-grid { gap:40px; }
+  .brand-logo { width:48px; height:48px; }
+}
+
+/* ====== FINE TUNING FOR SMALL DEVICES ====== */
+@media (max-width: 420px) {
+  .brand-logo { width:32px; height:32px; }
+  .brand-text { font-size:15px; }
+  .hero { padding:28px 0; }
+  .services-preview .cards { grid-template-columns: 1fr; gap:12px; }
+}
+
+/* END of styles.css */
