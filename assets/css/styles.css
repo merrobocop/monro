@@ -340,4 +340,38 @@ h1 {
   .services-preview .cards { grid-template-columns: 1fr; gap:12px; }
 }
 
-/* END of styles.css */
+/* ---- Восстановить обводку активного флага ---- */
+.lang-switcher {
+  /* на всякий случай: позволяем тени флагов не обрезаться родителем */
+  overflow: visible;
+  z-index: 70; /* чтобы тени были сверху */
+}
+
+/* базовый вид флага */
+.lang-switcher img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: #fff;           /* чтобы тонкие обводки хорошо читались */
+  box-sizing: content-box;    /* важнее для outline/outline-offset */
+  display: block;
+}
+
+/* активный флаг: внешнее кольцо + тень */
+.lang-switcher img.active,
+.lang-switcher a.active img {
+  /* внешняя обводка (outline) рисуется вне border и не обрезается так легко */
+  outline: 3px solid rgba(246,215,221,1); /* пастельно-розовая обводка */
+  outline-offset: 3px;                    /* промежуток между флагом и кольцом */
+  border-radius: 50%;
+  /* дополнительная мягкая тень для глубины */
+  box-shadow: 0 8px 22px rgba(32,24,24,0.08);
+}
+
+/* если есть необходимость перекрыть более специфичные правила */
+.lang-switcher img.active {
+  /* раскомментируй следующий line, если обводка всё ещё не видна */
+  /* outline: 3px solid rgba(246,215,221,1) !important; */
+}
+
