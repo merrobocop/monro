@@ -128,7 +128,6 @@ h1{
   width: clamp(32px, 9vw, 60px);
   height: auto;
   aspect-ratio: 1/1;
-  border-radius: 50%;
   object-fit: cover;
   flex: 0 0 auto;
   box-shadow: var(--shadow);
