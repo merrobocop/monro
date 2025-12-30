@@ -363,7 +363,7 @@ h1 {
 .lang-switcher a.active img {
   /* внешняя обводка (outline) рисуется вне border и не обрезается так легко */
   outline: 3px solid rgba(246,215,221,1); /* пастельно-розовая обводка */
-  outline-offset: 3px;                    /* промежуток между флагом и кольцом */
+  outline-offset: 1px;                    /* промежуток между флагом и кольцом */
   border-radius: 50%;
   /* дополнительная мягкая тень для глубины */
   box-shadow: 0 8px 22px rgba(32,24,24,0.08);
