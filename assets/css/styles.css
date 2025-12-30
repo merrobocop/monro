@@ -93,14 +93,36 @@ h1 {
 
 /* круглый логотип */
 .brand-logo {
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  object-fit:cover;
-  display:block;
-  flex:0 0 40px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+
+  /* корректный flex */
+  flex: 0 0 60px;
+
   box-shadow: var(--shadow);
 }
+
+/* планшеты */
+@media (max-width: 768px) {
+  .brand-logo {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+  }
+}
+
+/* телефоны */
+@media (max-width: 480px) {
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+}
+
 
 /* название рядом с логотипом */
 .brand-text{
